@@ -1,6 +1,6 @@
 {
-  "name": "sn-simple-markdown-editor",
-  "version": "1.0.153",
+  "name": "sn-fancy-markdown-editor",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
