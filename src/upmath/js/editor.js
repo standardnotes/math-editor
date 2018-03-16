@@ -65,24 +65,28 @@
 			.use(markdownitS2Tex)
 			.use(markdownitSub)
 			.use(markdownitSup)
+			.use(markdownitFootnote)
 		;
 
 		var _mdHtmlAndImages = markdownit(defaults)
 			.use(markdownitS2Tex)
 			.use(markdownitSub)
 			.use(markdownitSup)
+			.use(markdownitFootnote)
 		;
 
 		var _mdHtmlAndTex = markdownit(defaults)
 			.use(markdownitS2Tex, {noreplace: true})
 			.use(markdownitSub)
 			.use(markdownitSup)
+			.use(markdownitFootnote)
 		;
 
 		var _mdHtmlHabrAndImages = markdownit(defaults)
 			.use(markdownitS2Tex, defaults._habr)
 			.use(markdownitSub)
 			.use(markdownitSup)
+			.use(markdownitFootnote)
 		;
 
 		var _mdMdAndImages = markdownit('zero')
