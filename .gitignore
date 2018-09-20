@@ -8,3 +8,5 @@ dist/dist.css.map
 dist/dist.js.map
 dist/app.css
 dist/app.css.map
+
+.DS_Store
