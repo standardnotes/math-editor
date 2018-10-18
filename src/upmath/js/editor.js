@@ -294,11 +294,14 @@
 
 			_oldSource = source;
 
+			// Always render html because we need it to generate previews for SN
+			domSetPreviewHTML(_mdPreview.render(source));
+
 			// Update only active view to avoid slowdowns
 			// (debug & src view with highlighting are a bit slow)
 			if (_view === 'html') {
 				imageLoader.reset();
-				domSetPreviewHTML(_mdPreview.render(source));
+				// domSetPreviewHTML(_mdPreview.render(source));
 				imageLoader.fixDom();
 			}
 			else if (_view === 'htmltex') {
@@ -475,12 +478,15 @@
 
 		// Sync scroll listeners
 
-		var updateText = debounce(parserCollection.updateResult, 300, {maxWait: 3000});
-		eTextarea.addEventListener('keyup', updateText);
+		// var updateText = debounce(parserCollection.updateResult, 240, {maxWait: 3000});
 
-		eTextarea.addEventListener('paste', updateText);
-		eTextarea.addEventListener('cut', updateText);
-		eTextarea.addEventListener('mouseup', updateText);
+		// We'll update text on our own
+		var updateText = parserCollection.updateResult;
+
+		// eTextarea.addEventListener('keyup', updateText);
+		// eTextarea.addEventListener('paste', updateText);
+		// eTextarea.addEventListener('cut', updateText);
+		// eTextarea.addEventListener('mouseup', updateText);
 
 		eTextarea.addEventListener('touchstart', syncScroll.switchScrollToSrc);
 		eTextarea.addEventListener('mouseover', syncScroll.switchScrollToSrc);
@@ -579,6 +585,10 @@
 				updateText();
 				decorator.recalcHeight()
 				decorator.update();
+			},
+			getHTML: () => {
+				var result = document.getElementsByClassName('result-html');
+				return eResultHtml.innerHTML;
 			}
 		}
 

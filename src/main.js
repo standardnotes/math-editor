@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // on ready
   });
 
+  componentManager.coallesedSaving = false;
+
   // componentManager.loggingEnabled = true;
 
   componentManager.streamContextItem((note) => {
@@ -28,11 +30,39 @@ document.addEventListener("DOMContentLoaded", function(event) {
     window.upmath.updateText();
   });
 
-  editor.addEventListener("input", function(event){
+  editor.addEventListener("input", function(event) {
     var text = editor.value || "";
-    if(workingNote) {
+
+    function strip(html) {
+      var tmp = document.implementation.createHTMLDocument("New").body;
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || "";
+    }
+
+    function truncateString(string, limit = 90) {
+      if(string.length <= limit) {
+        return string;
+      } else {
+        return string.substring(0, limit) + "...";
+      }
+    }
+
+    function save() {
+      window.upmath.updateText();
+
+      var html = window.upmath.getHTML();
+      var strippedHtml = truncateString(strip(html));
+      workingNote.content.preview_plain = strippedHtml;
+
       workingNote.content.text = text;
       componentManager.saveItem(workingNote);
+    }
+
+    if(workingNote) {
+      if(window.saveTimer) clearTimeout(window.saveTimer);
+        window.saveTimer = setTimeout(function () {
+          save();
+        }, 250);
     }
   });
 
