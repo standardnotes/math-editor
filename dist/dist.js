@@ -889,15 +889,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
 			_oldSource = source;
 
 			// Always render html because we need it to generate previews for SN
+			imageLoader.reset();
 			domSetPreviewHTML(_mdPreview.render(source));
+			imageLoader.fixDom();
 
 			// Update only active view to avoid slowdowns
 			// (debug & src view with highlighting are a bit slow)
-			if (_view === 'html') {
-				imageLoader.reset();
-				// domSetPreviewHTML(_mdPreview.render(source));
-				imageLoader.fixDom();
-			} else if (_view === 'htmltex') {
+			if (_view === 'htmltex') {
 				domSetHighlightedContent('result-src-content', '<script src="https://tex.s2cms.ru/latex.js"></script>\n' + _mdHtmlAndTex.render(source), 'html');
 			} else if (_view === 'debug') {
 				domSetHighlightedContent('result-src-content', JSON.stringify(_mdHtmlAndImages.parse(source, { references: {} }), null, 2), 'json');
