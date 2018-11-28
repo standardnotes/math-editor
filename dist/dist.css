@@ -23,14 +23,21 @@ html {
   position: relative;
 }
 
-.ldt pre {
+pre.ldt-pre {
   -moz-padding-start: 1px;
   white-space: pre-wrap;
   word-wrap: break-word;
   margin: 0;
   border: 0;
+  -webkit-nbsp-mode: space;
 }
 
+@supports (-webkit-overflow-scrolling: touch) {
+  /* CSS specific to iOS devices */
+  .ldt pre {
+    margin-left: 3px !important;
+  }
+}
 body,
 hr {
   padding: 0;

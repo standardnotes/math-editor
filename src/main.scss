@@ -18,17 +18,26 @@ html {
     color: #000
 }
 
+
 .ldt {
     overflow: auto;
     position: relative
 }
 
-.ldt pre {
-    -moz-padding-start: 1px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    margin: 0;
-    border: 0
+pre.ldt-pre {
+  -moz-padding-start: 1px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+  border: 0;
+  -webkit-nbsp-mode: space;
+}
+
+@supports (-webkit-overflow-scrolling: touch) {
+  /* CSS specific to iOS devices */
+  .ldt pre {
+    margin-left: 3px !important;
+  }
 }
 
 body,
