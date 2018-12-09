@@ -1,3 +1,12 @@
+html {
+  font-size: var(--sn-stylekit-base-font-size);
+}
+
+body {
+  font-size: var(--sn-stylekit-font-size-editor);
+  font-family: Calibri, "Trebuchet MS", sans-serif;
+}
+
 .full-height,
 .ldt label,
 body,
@@ -10,12 +19,11 @@ html {
     padding: 4px
 }
 
-.ldt,
 .ldt pre,
 .ldt textarea {
-    font-size: 14px;
-    font-family: monospace;
-    color: #000
+  font-size: var(--sn-stylekit-font-size-editor);
+  font-family: monospace;
+  color: var(--sn-stylekit-editor-foreground-color);
 }
 
 
@@ -74,8 +82,9 @@ hr {
 }
 
 .ldt textarea {
-    color: transparent!important;
-    color: rgba(0, 0, 0, .3)!important;
+    font-size: var(--sn-stylekit-editor-foreground-color);
+    color: transparent !important;
+    color: rgba(0, 0, 0, .3) !important;
     margin: 0;
     border: 0;
     background: 0 0;
@@ -85,7 +94,7 @@ hr {
     width: 100%;
     min-height: 100%;
     overflow: hidden;
-    filter: alpha(opacity=30)
+    filter: alpha(opacity=30);
 }
 
 .hljs {
@@ -178,10 +187,9 @@ body {
     background-color: transparent;
 }
 
-body,
 button,
 textarea {
-    font: 16px/1.5 Calibri, "Trebuchet MS", sans-serif
+    font: var(--sn-stylekit-font-size-editor) Calibri, "Trebuchet MS", sans-serif;
 }
 
 sub,
@@ -204,7 +212,7 @@ hr {
 h1,
 h2,
 h3 {
-    font: 16px/1.2 Cambria, Georgia, serif;
+    font: var(--sn-stylekit-font-size-editor) Cambria, Georgia, serif;
     margin: 1em 0 0;
     font-weight: 400
 }
@@ -229,20 +237,22 @@ h3 {
     font-size: 125%
 }
 
+
 div.header {
-    background: #F6F6F6;
-    color: #fff;
-    padding: 0 16px;
-    margin: 0;
-    height: 48px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 20
+  background: var(--sn-stylekit-contrast-background-color);
+  color: var(--sn-stylekit-contrast-foreground-color);
+  border-bottom: 1px solid var(--sn-stylekit-contrast-border-color);
+  padding: 0 16px;
+  margin: 0;
+  height: 48px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 20
 }
 
 .header-item {
@@ -350,11 +360,10 @@ textarea.source {
 }
 
 .ldt pre.ldt-pre,
-.ldt textarea,
-.source {
+.ldt textarea {
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-    font-size: 14px;
-    line-height: 21px
+    font-size: var(--sn-stylekit-font-size-editor);
+    line-height: calc(var(--sn-stylekit-font-size-editor) + 0.2rem);
 }
 
 pre.ldt-pre span {
@@ -397,19 +406,26 @@ textarea {
 .result-as-htmltex .result-src,
 .result-as-md .result-src,
 .result-as-src .result-src {
-    display: block
+    display: block;
+    color: var(--sn-stylekit-editor-foreground-color);
 }
 
 .result-html {
     padding-top: 0;
-    padding-bottom: 0
+    padding-bottom: 0;
+
+    a {
+      color: var(--sn-stylekit-info-color);
+    }
 }
 
 .result-html .svg-preview {
     overflow: visible;
     -webkit-transition: opacity .4s ease-in-out;
     -moz-transition: opacity .4s ease-in-out;
-    transition: opacity .4s ease-in-out
+    transition: opacity .4s ease-in-out;
+
+    fill: var(--sn-stylekit-info-color);
 }
 
 .hljs {
@@ -434,74 +450,72 @@ textarea {
     background: #e5cda5
 }
 
-.ldt .header,
-.ldt .header2 {
+.ldt .header, .ldt .header2 {
     font-weight: 700;
-    color: #00f
+    color: var(--sn-stylekit-info-color);
 }
 
 .ldt .quote {
-    background: #fff3ea
+    background: var(--sn-stylekit-secondary-contrast-background-color);
 }
 
 .ldt .list {
-    background: #f2ffef
+    background: var(--sn-stylekit-secondary-contrast-background-color);
 }
 
-.ldt .code,
-.ldt .fence {
-    background: #eee
+.ldt .code, .ldt .fence {
+  background: var(--sn-stylekit-secondary-contrast-background-color);
+    // color: var(--sn-stylekit-neutral-contrast-color);
 }
 
-.ldt .sub,
-.ldt .sup {
-    color: #daa520
+.ldt .sub, .ldt .sup {
+    color: var(--sn-stylekit-warning-color);
 }
 
 .ldt .link {
-    color: #00f
+    color: var(--sn-stylekit-info-color);
 }
 
 .ldt .latex {
-    color: #7ca600
+    color: var(--sn-stylekit-success-color);
 }
 
 .ldt .italic {
-    color: #0dd
+    color: var(--sn-stylekit-warning-color);
 }
 
 .ldt .strike {
-    text-decoration: line-through
+    text-decoration: line-through;
 }
 
 .ldt .latexBlock.keyword {
-    color: #00f
+    color: var(--sn-stylekit-info-color);
 }
 
 .ldt .latexBlock.keyword2 {
-    color: #0dd
+    color: var(--sn-stylekit-info-color);
 }
 
 .ldt .latexBlock.keyword3 {
-    color: #8ECA81
+    color: var(--sn-stylekit-success-color);
 }
 
 .ldt .latexBlock.bracket {
-    color: #ff0150
+    color: var(--sn-stylekit-danger-color);
 }
 
 .ldt .latexBlock.comment {
-    color: #aaa
+    color: var(--sn-stylekit-neutral-color-color);
 }
 
 .ldt .latexBlock.index {
-    color: #f5d4a5
+    color: var(--sn-stylekit-warning-color);
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-    .ldt textarea {
-        color: #000!important;
-    }
+    // .ldt textarea {
+    //     color: var(--sn-stylekit-editor-foreground-color);
+    // }
     .ldt textarea::-webkit-input-placeholder {
         text-shadow: none;
         -webkit-text-fill-color: initial

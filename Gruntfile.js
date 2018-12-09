@@ -88,7 +88,10 @@ module.exports = function(grunt) {
       },
 
       css: {
-        src: ['dist/app.css'],
+        options: {
+          separator: '',
+        },
+        src: ['node_modules/sn-stylekit/dist/stylekit.css', 'dist/app.css'],
         dest: 'dist/dist.css',
       }
     }
