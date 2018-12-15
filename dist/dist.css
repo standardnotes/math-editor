@@ -1928,12 +1928,6 @@ hr {
   cursor: text;
 }
 
-input,
-textarea,
-[contenteditable] {
-  caret-color: red;
-}
-
 body,
 sub,
 sup {
