@@ -317,7 +317,8 @@ div.header {
 
 .container {
     padding-top: 48px;
-    overflow: hidden
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch; // momentum scrolling
 }
 
 .half-width,
