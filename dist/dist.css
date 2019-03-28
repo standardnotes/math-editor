@@ -1880,6 +1880,10 @@ body {
   font-family: Calibri, "Trebuchet MS", sans-serif;
 }
 
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 .full-height,
 .ldt label,
 body,
