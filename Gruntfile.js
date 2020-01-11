@@ -33,10 +33,6 @@ module.exports = function(grunt) {
   },
 
    babel: {
-        options: {
-            sourceMap: true,
-            presets: ['es2015']
-        },
         app: {
             files: {
                 'dist/app.js': ['dist/app.js']
@@ -64,17 +60,13 @@ module.exports = function(grunt) {
         dest: 'dist/app.js',
       },
 
-      upmath: {
-        src: [
-          'src/upmath/**/*.js',
-        ],
-        dest: 'dist/upmath.js',
-      },
-
       lib: {
         src: [
-          'vendor/*.js',
+          'src/upmath/**/*.js',
+          "node_modules/draggabilly/dist/draggabilly.pkgd.js",
           "node_modules/markdown-it/dist/markdown-it.min.js",
+          "node_modules/markdown-it-sub/dist/markdown-it-sub.min.js",
+          "node_modules/markdown-it-sup/dist/markdown-it-sup.min.js",
           "node_modules/markdown-it-footnote/dist/markdown-it-footnote.min.js",
           "node_modules/markdown-it-task-lists/dist/markdown-it-task-lists.min.js",
           "node_modules/sn-components-api/dist/dist.js"
@@ -94,7 +86,7 @@ module.exports = function(grunt) {
         src: ['node_modules/sn-stylekit/dist/stylekit.css', 'dist/app.css'],
         dest: 'dist/dist.css',
       }
-    }
+    },
   });
 
   grunt.loadNpmTasks('grunt-newer');
@@ -105,5 +97,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-copy');
 
-  grunt.registerTask('default', ['concat:app', 'concat:upmath', 'babel', 'browserify', 'concat:lib', 'concat:dist', 'sass', 'concat:css']);
+  grunt.registerTask('default', [
+    'concat:app',
+    'babel',
+    'browserify',
+    'concat:lib',
+    'concat:dist',
+    'sass',
+    'concat:css'
+  ]);
 };

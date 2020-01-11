@@ -62,31 +62,27 @@
 		updateCallback
 	) {
 		var _mdPreview = markdownit(defaults)
-			.use(markdownitS2Tex)
 			.use(markdownitSub)
 			.use(markdownitSup)
 		;
 
 		var _mdHtmlAndImages = markdownit(defaults)
-			.use(markdownitS2Tex)
 			.use(markdownitSub)
 			.use(markdownitSup)
 		;
 
 		var _mdHtmlAndTex = markdownit(defaults)
-			.use(markdownitS2Tex, {noreplace: true})
 			.use(markdownitSub)
 			.use(markdownitSup)
 		;
 
 		var _mdHtmlHabrAndImages = markdownit(defaults)
-			.use(markdownitS2Tex, defaults._habr)
 			.use(markdownitSub)
 			.use(markdownitSup)
 		;
 
 		var _mdMdAndImages = markdownit('zero')
-			.use(markdownitS2Tex)
+
 		;
 
 		/**
@@ -225,18 +221,6 @@
 			return tokens[idx].content;
 		};
 
-		// Custom image embedding for smooth UX
-		_mdPreview.renderer.rules.math_inline = function (tokens, idx) {
-			return imageLoader.getHtmlStub(tokens[idx].content);
-		};
-
-		/**
-		 * Habrahabr hack for numerating formulas
-		 */
-		_mdHtmlHabrAndImages.renderer.rules.math_number = function (tokens, idx) {
-			return '<img align="right" src="//tex.s2cms.ru/svg/' + tokens[idx].content + '" />';
-		};
-
 		/**
 		 * Habrahabr "source" tag
 		 *
@@ -299,12 +283,7 @@
 			domSetPreviewHTML(_mdPreview.render(source));
 			imageLoader.fixDom();
 
-			// Update only active view to avoid slowdowns
-			// (debug & src view with highlighting are a bit slow)
-			if (_view === 'htmltex') {
-				domSetHighlightedContent('result-src-content', '<script src="https://tex.s2cms.ru/latex.js"></script>\n' + _mdHtmlAndTex.render(source), 'html');
-			}
-			else if (_view === 'debug') {
+      if (_view === 'debug') {
 				domSetHighlightedContent(
 					'result-src-content',
 					JSON.stringify(_mdHtmlAndImages.parse(source, {references: {}}), null, 2),
@@ -329,10 +308,6 @@
 
 			if (_view === 'habr') {
 				return _mdHtmlHabrAndImages.render(source);
-			}
-
-			if (_view === 'htmltex') {
-				return '<script src="https://tex.s2cms.ru/latex.js"></script>\n' + _mdHtmlAndTex.render(source);
 			}
 
 			if (_view === 'md') {

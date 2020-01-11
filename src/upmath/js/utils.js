@@ -528,22 +528,6 @@ function ImageLoader(preloader, protocol) {
 	}
 
 	/**
-	 * Generate the picture HTML code while parsing and store the state.
-	 *
-	 * @param formula
-	 * @returns {string}
-	 */
-	this.getHtmlStub = function (formula) {
-		curItems[n] = protocol + '//tex.s2cms.ru/svg/' + encodeURIComponent(formula);
-
-		var html = '<span id="s2tex_' + n + '"></span>';
-
-		n++;
-
-		return html;
-	};
-
-	/**
 	 * Finish the parsing process.
 	 */
 	this.fixDom = function () {

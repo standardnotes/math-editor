@@ -3,14 +3,11 @@
 <head>
   <base target="_blank">
 	<meta charset="UTF-8">
-	<title>Markdown & LaTeX Editor</title>
+	<title>Markdown Color</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="dist/dist.css">
-
-	<link rel="dns-prefetch" href="//tex.s2cms.ru">
-	<link rel="preconnect" href="//tex.s2cms.ru" crossorigin>
 </head>
 
 <body>
@@ -31,7 +28,8 @@
 					for="id_html"
 					title="Example of rendered HTML"
 					data-result-as="html"
-				>preview</label><input
+				>preview</label>
+        <input
 						class="control-input"
 						id="id_src"
 						type="radio"
@@ -41,27 +39,8 @@
 					for="id_src"
 					title="HTML with img-equations"
 					data-result-as="src"
-				>html</label><input
-						class="control-input"
-						id="id_htmltex"
-						type="radio"
-						name="source_type"
-									><label
-					class="control-item"
-					for="id_htmltex"
-					title="HTML with raw LaTeX equations"
-					data-result-as="htmltex"
-				>html-tex</label><input
-						class="control-input"
-						id="id_md"
-						type="radio"
-						name="source_type"
-									><label
-					class="control-item"
-					for="id_md"
-					title="Markdown with img-equations"
-					data-result-as="md"
-				>md</label>	<button class="toolbar-button _download-result" title="Download result">⇓</button>
+				>html</label>
+        <button class="toolbar-button _download-result" title="Download result">⇓</button>
 		</div>
 	</div>
 	<div class="container full-height" id="container-block"><!--
@@ -72,8 +51,6 @@
 			<pre class="result-src full-height"><code class="result-src-content"></code></pre>
 		</div><!--
 	--></div>
-	<script src="dist/vendors.min.js"></script>
-	<script src="dist/upmath.js"></script>
   <script src="dist/dist.js"></script>
 </body>
 </html>
