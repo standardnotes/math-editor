@@ -69,6 +69,7 @@ module.exports = function(grunt) {
           "node_modules/markdown-it-sup/dist/markdown-it-sup.min.js",
           "node_modules/markdown-it-footnote/dist/markdown-it-footnote.min.js",
           "node_modules/markdown-it-task-lists/dist/markdown-it-task-lists.min.js",
+          "node_modules/katex/dist/katex.min.js",
           "node_modules/sn-components-api/dist/dist.js"
         ],
         dest: 'dist/lib.js',
@@ -83,10 +84,27 @@ module.exports = function(grunt) {
         options: {
           separator: '',
         },
-        src: ['node_modules/sn-stylekit/dist/stylekit.css', 'dist/app.css'],
+        src: [
+          'node_modules/sn-stylekit/dist/stylekit.css',
+          'node_modules/katex/dist/katex.min.css',
+          'dist/app.css'
+        ],
         dest: 'dist/dist.css',
       }
     },
+
+    copy: {
+      katexFonts: {
+        files: [
+          {
+            expand: true,
+            cwd: 'node_modules/katex/dist/fonts',
+            src: ['**'],
+            dest: 'dist/fonts/'
+          }
+        ]
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-newer');
@@ -104,6 +122,7 @@ module.exports = function(grunt) {
     'concat:lib',
     'concat:dist',
     'sass',
-    'concat:css'
+    'concat:css',
+    'copy',
   ]);
 };
