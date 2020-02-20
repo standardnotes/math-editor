@@ -62,27 +62,31 @@
 		updateCallback
 	) {
 		var _mdPreview = markdownit(defaults)
+			.use(markdownitS2Tex)
 			.use(markdownitSub)
 			.use(markdownitSup)
 		;
 
 		var _mdHtmlAndImages = markdownit(defaults)
+			.use(markdownitS2Tex)
 			.use(markdownitSub)
 			.use(markdownitSup)
 		;
 
 		var _mdHtmlAndTex = markdownit(defaults)
+			.use(markdownitS2Tex, {noreplace: true})
 			.use(markdownitSub)
 			.use(markdownitSup)
 		;
 
 		var _mdHtmlHabrAndImages = markdownit(defaults)
+			.use(markdownitS2Tex, defaults._habr)
 			.use(markdownitSub)
 			.use(markdownitSup)
 		;
 
 		var _mdMdAndImages = markdownit('zero')
-
+			.use(markdownitS2Tex)
 		;
 
 		/**
@@ -283,7 +287,12 @@
 			domSetPreviewHTML(_mdPreview.render(source));
 			imageLoader.fixDom();
 
-      if (_view === 'debug') {
+			// Update only active view to avoid slowdowns
+			// (debug & src view with highlighting are a bit slow)
+			if (_view === 'htmltex') {
+				domSetHighlightedContent('result-src-content', _mdHtmlAndTex.render(source), 'html');
+			}
+			else if (_view === 'debug') {
 				domSetHighlightedContent(
 					'result-src-content',
 					JSON.stringify(_mdHtmlAndImages.parse(source, {references: {}}), null, 2),
@@ -308,6 +317,10 @@
 
 			if (_view === 'habr') {
 				return _mdHtmlHabrAndImages.render(source);
+			}
+
+			if (_view === 'htmltex') {
+				return _mdHtmlAndTex.render(source);
 			}
 
 			if (_view === 'md') {

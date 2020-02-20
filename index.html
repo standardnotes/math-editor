@@ -3,7 +3,7 @@
 <head>
   <base target="_blank">
 	<meta charset="UTF-8">
-	<title>Markdown Color</title>
+	<title>Markdown &amp; LaTeX Editor</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,9 +37,31 @@
 									><label
 					class="control-item"
 					for="id_src"
-					title="HTML with img-equations"
+					title="HTML with rendered equations"
 					data-result-as="src"
 				>html</label>
+				<input
+						class="control-input"
+						id="id_htmltex"
+						type="radio"
+						name="source_type"
+									><label
+					class="control-item"
+					for="id_htmltex"
+					title="HTML with raw LaTeX equations"
+					data-result-as="htmltex"
+				>html-tex</label>
+				<input
+						class="control-input"
+						id="id_md"
+						type="radio"
+						name="source_type"
+									><label
+					class="control-item"
+					for="id_md"
+					title="Markdown with rendered equations"
+					data-result-as="md"
+				>md</label>
         <button class="toolbar-button _download-result" title="Download result">⇓</button>
 		</div>
 	</div>
