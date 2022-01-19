@@ -24,7 +24,7 @@
     "grunt-newer": "^1.3.0",
     "grunt-remove-comments": "^0.1.6",
     "katex": "^0.11.1",
-    "markdown-it": "^10.0.0",
+    "markdown-it": "^12.3.2",
     "markdown-it-footnote": "^3.0.2",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
