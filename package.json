@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prepublish": "npm run build",
+    "build": "grunt",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Standard Notes",
